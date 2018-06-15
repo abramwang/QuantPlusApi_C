@@ -1,9 +1,26 @@
-link_directories("D:/Develop/git/QuantPlus/APIS/include")
-link_libraries("D:/Develop/git/QuantPlus/APIS/lib-x64-msvc-12.0-Release")
-# 查找当前目录下的所有源文件
-# 并将名称保存到 DIR_LIB_SRCS 变量
-aux_source_directory(. DIR_LIB_SRCS)
+###
+###
 
-# 指定生成 MathFunctions 链接库
-add_library (QP_Api ${DIR_LIB_SRCS})
-target_link_libraries(QP_Api PT_QuantApi)
+PROJECT(QP_Api)
+
+AUX_SOURCE_DIRECTORY(./ SRC_LIST)
+
+###输出路径
+SET(LIBRARY_OUTPUT_PATH ../LIB)
+
+
+###头文件路径
+INCLUDE_DIRECTORIES(
+F:\04系统编码\03tag\QuantApi-beta5.1.4\PT_QuantApi\include
+)
+
+###链接库路径
+LINK_DIRECTORIES(
+F:\04系统编码\03tag\QuantApi-beta5.1.4\PT_QuantApi\bin\lib-x64-msvc-12.0-Debug
+)
+
+###生成静态库
+ADD_LIBRARY(QP_Api STATIC ${SRC_LIST})
+
+
+TARGET_LINK_LIBRARIES(QP_Api PT_QuantApi)
